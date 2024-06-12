@@ -23,13 +23,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/mail")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:80", allowedHeaders = "*")
 public class MailController {
 	
 	private final MailService mailService;
 	
 	@PostMapping("")
 	public ResponseEntity<List<ResultRes>> fix(@RequestBody MailReq mailReq) {
+		System.out.println("ddddddddd");
 		log.info("contents  :  " + mailReq.getContents());
 		return new ResponseEntity<>(mailService.sendKakao(mailReq), HttpStatus.OK);
 	}
